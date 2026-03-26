@@ -3,7 +3,7 @@ import { AngularAppEngine, createRequestHandler } from '@angular/ssr';
 const angularApp = new AngularAppEngine({
 	// It is safe to set allow `localhost`, so that SSR can run in local development,
 	// as, in production, Cloudflare will ensure that `localhost` is not the host.
-	allowedHosts: ['localhost'],
+	allowedHosts: ['localhost', 'mehaxan.mehedi-hasansjs.workers.dev'],
 });
 
 /**
