@@ -1,0 +1,217 @@
+{
+  "personal": {
+    "name": "Mehedi Hasan",
+    "title": "Senior Software Engineer",
+    "tagline": "Building scalable web apps with Angular, Node & beyond",
+    "bio": "I'm a Senior Software Engineer with over 6 years of experience crafting high-quality web applications. Currently at Brain Station 23 PLC, I specialize in Angular and front-end architecture, but I am proficient across the full stack—from designing intuitive UIs to building reliable NestJS backends and managing cloud deployments. I have a strong background in leadership, mentoring, and competitive programming.",
+    "email": "hello@mehaxan.com",
+    "location": "Dhaka, Bangladesh",
+    "avatar": "https://scontent.fdac152-1.fna.fbcdn.net/v/t39.30808-1/657270914_4097814740473924_6619879872236105820_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=100&ccb=1-7&_nc_sid=1d2534&_nc_eui2=AeEIlDQ7oTfYeqlILtuUqN42H-QCPnMNdrMf5AI-cw12s_ZhEfHC-nqne9my99hFms4A3rGx_QuAFJj-eaCeTZJv&_nc_ohc=Y74uCp3V2HoQ7kNvwHaLJkA&_nc_oc=AdrUHWtaU9CCAM7ea5NuQwwL0epVoNYISNpjcLFQjo1N7iZqOKnItddCjF1Fgbrq5fc&_nc_zt=24&_nc_ht=scontent.fdac152-1.fna&_nc_gid=gewYV_8ByCZOGrmZI347DQ&_nc_ss=7a32e&oh=00_AfwYSjCeYmSKjy5trLZAO804xtVLW77gOeEa04W0-qdRkg&oe=69CA7BC3",
+    "social": {
+      "github": "https://github.com/mehaxan",
+      "linkedin": "https://linkedin.com/in/mehaxan",
+      "twitter": "https://twitter.com/mehaxan",
+      "medium": "https://medium.com/@mehaxan"
+    }
+  },
+  "experience": [
+    {
+      "company": "Brain Station 23 PLC.",
+      "companyUrl": "https://brainstation-23.com",
+      "role": "Senior Software Engineer",
+      "startDate": "2025-01-01",
+      "endDate": null,
+      "description": "Collaborating with cross-functional and cross-regional teams to ensure product alignment, security, and scalability.",
+      "highlights": [
+        "Reviewed code and mentored junior developers to improve code quality and delivery",
+        "Proactively identified architectural issues and ensured timely, optimized feature delivery"
+      ],
+      "technologies": ["Angular", "TailwindCSS", "C#"]
+    },
+    {
+      "company": "Brain Station 23 PLC.",
+      "companyUrl": "https://brainstation-23.com",
+      "role": "Software Engineer",
+      "startDate": "2023-07-01",
+      "endDate": "2024-12-31",
+      "description": "Focused on secure multi-project access and real-time visualization tools.",
+      "highlights": [
+        "Implemented a role-based authorization framework in Angular for secure multi-project access",
+        "Integrated AI-driven summarization tools into E&P sector applications to enhance reporting efficiency",
+        "Developed a 3D wellbore analysis component using React and Unity for real-time visualization"
+      ],
+      "technologies": ["Angular", "React", "TailwindCSS", "C#", "WebGL (Unity)"]
+    },
+    {
+      "company": "Brain Station 23 PLC.",
+      "companyUrl": "https://brainstation-23.com",
+      "role": "Associate Software Engineer",
+      "startDate": "2022-04-01",
+      "endDate": "2023-06-30",
+      "highlights": [
+        "Led development of high-performance Angular applications, achieving 80%+ performance improvements",
+        "Enabled a 230% sales increase through seamless integration of key business features",
+        "Built advanced data visualization and project management tools for well-based industries"
+      ],
+      "technologies": ["React", "Angular", "TailwindCSS", "WebGL (Unity)"]
+    },
+    {
+      "company": "AITS Idea Ltd.",
+      "role": "Associate Software Engineer",
+      "startDate": "2021-07-01",
+      "endDate": "2022-03-31",
+      "highlights": [
+        "Led development of Angular-based ERP and POS systems, achieving 40% data accuracy improvement",
+        "Built high-performance product website for Jain Laboratories Ltd with < 3s load times",
+        "Reduced bounce rate by 40% through optimized UI and rapid prototyping"
+      ],
+      "technologies": ["Angular", "TailwindCSS", "Figma"]
+    },
+    {
+      "company": "AITS Idea Ltd.",
+      "role": "Junior Software Engineer",
+      "startDate": "2021-01-01",
+      "endDate": "2021-06-30",
+      "description": "Assisted in the development of web applications and user interfaces.",
+      "highlights": [
+        "Collaborated on frontend modules using Angular and supported bug fixing and performance tuning",
+        "Gained hands-on experience with RESTful API integration and responsive design"
+      ],
+      "technologies": ["Angular", "JavaScript", "HTML/CSS"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Dhaka International University",
+      "degree": "B.S. in Computer Science & Engineering",
+      "location": "Dhaka, Bangladesh",
+      "endDate": "2020-12-31"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Frontend",
+      "items": [
+        { "name": "Angular", "level": "expert" },
+        { "name": "React", "level": "proficient" },
+        { "name": "TypeScript", "level": "expert" },
+        { "name": "TailwindCSS", "level": "expert" },
+        { "name": "Ionic", "level": "proficient" },
+        { "name": "RxJS", "level": "expert" }
+      ]
+    },
+    {
+      "category": "Backend",
+      "items": [
+        { "name": "NestJS", "level": "proficient" },
+        { "name": "NodeJS", "level": "proficient" },
+        { "name": "C#", "level": "proficient" },
+        { "name": "PostgresSQL", "level": "proficient" },
+        { "name": "MongoDB", "level": "proficient" }
+      ]
+    },
+    {
+      "category": "DevOps & Tools",
+      "items": [
+        { "name": "Azure DevOps", "level": "proficient" },
+        { "name": "Docker", "level": "proficient" },
+        { "name": "GitHub Actions", "level": "proficient" },
+        { "name": "Cloudflare Page", "level": "proficient" },
+        { "name": "Figma", "level": "proficient" },
+        { "name": "Railway", "level": "proficient" }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "mehaxan",
+      "description": "Personal portfolio website built with Angular 21 and deployed on Cloudflare Workers. You're looking at it right now!",
+      "technologies": ["Angular", "TypeScript", "Tailwind CSS", "Cloudflare Workers"],
+      "url": "https://mehaxan.dev",
+      "github": "https://github.com/mehaxan/mehaxan",
+      "featured": true
+    },
+    {
+      "name": "Side Project 2",
+      "description": "A description of your side project goes here. Update this in portfolio.json or your Gist.",
+      "technologies": ["Angular", "Node.js", "MongoDB"],
+      "url": "",
+      "github": "",
+      "featured": false
+    },
+    {
+      "name": "Side Project 3",
+      "description": "A description of your side project goes here. Update this in portfolio.json or your Gist.",
+      "technologies": ["React", "TypeScript", "PostgreSQL"],
+      "url": "",
+      "github": "",
+      "featured": false
+    }
+  ],
+  "blog": [
+    {
+      "title": "Getting Started with Angular Signals",
+      "mediumUrl": "https://medium.com/@mehaxan",
+      "date": "2025-10-01",
+      "summary": "A practical guide to Angular Signals — the new reactivity primitive replacing Zone.js change detection in modern Angular applications.",
+      "readingTime": "6 min read"
+    },
+    {
+      "title": "Deploying Angular Apps to Cloudflare Workers",
+      "mediumUrl": "https://medium.com/@mehaxan",
+      "date": "2025-08-15",
+      "summary": "Step-by-step walkthrough of deploying an Angular SSR application to Cloudflare Workers using @angular/ssr and Wrangler.",
+      "readingTime": "8 min read"
+    },
+    {
+      "title": "Mastering RxJS in Angular",
+      "mediumUrl": "https://medium.com/@mehaxan",
+      "date": "2025-05-20",
+      "summary": "Deep dive into the RxJS operators every Angular developer should know, with real-world examples from production codebases.",
+      "readingTime": "10 min read"
+    }
+  ],
+  "activities": [
+    {
+      "organization": "DIU Computer & Programming Club (DIU CPC)",
+      "role": "President",
+      "duration": "Aug 2018 – Apr 2021",
+      "highlights": [
+        "Re-established the club and taught JavaScript to members",
+        "Organized an inter-university event with approx. 1000 participants",
+        "Organized 11 intra-university programming contests"
+      ]
+    },
+    {
+      "organization": "Ex_Coder",
+      "role": "Team Lead",
+      "duration": "Jan 2019 – Dec 2020",
+      "highlights": [
+        "Participated in ICPC Dhaka Regional 2019 (Southeast University)",
+        "Participated in NCPC 2020 (MIST)"
+      ]
+    }
+  ],
+  "talks": [
+    {
+      "title": "Prepare for your career: Ultimate Guide to Kickstart Your Journey",
+      "event": "DIU CPC, Dhaka International University",
+      "year": 2025,
+      "role": "Speaker"
+    },
+    {
+      "title": "Expectation vs Reality in Bangladesh's Software Job Market",
+      "event": "DIU CSE Department",
+      "year": 2024,
+      "role": "Guest Speaker"
+    }
+  ],
+  "publications": [
+    {
+      "title": "RHM: Designing a Customized Health Model for the Union of Ramjibon",
+      "publisher": "IEEE International Conference on Biomedical Engineering, Computer and Information Technology for Health (BECITHCON)",
+      "year": 2019,
+      "doi": "10.1109/BECITHCON48839.2019.9063165"
+    }
+  ]
+}

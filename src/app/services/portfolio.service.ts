@@ -13,6 +13,6 @@ export class PortfolioService {
    * 'https://gist.githubusercontent.com/mehaxan/1dad6f16f2101e803ab7dfeb4a3a762e/raw/mehaxan.json'
    */
   readonly portfolio$: Observable<Portfolio> = this.http
-    .get<Portfolio>('https://gist.githubusercontent.com/mehaxan/1dad6f16f2101e803ab7dfeb4a3a762e/raw/mehaxan.json')
+    .get<Portfolio>('/assets/data/portfolio.json')
     .pipe(shareReplay(1));
 }

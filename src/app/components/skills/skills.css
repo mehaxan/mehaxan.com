@@ -1,76 +1,57 @@
 :host { display: block; }
 
-.section-pad { padding: 6rem 0; }
+.section-pad { padding: 5rem 0; }
 
-/* Colorful skill category cards laid in a responsive grid */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
 }
 
 .skill-category-card {
-  background: rgba(var(--bg-card-rgb), 0.6);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
-  position: relative;
-  overflow: hidden;
-  transition:
-    border-color 0.3s var(--easing-out),
-    transform 0.35s var(--easing-spring),
-    box-shadow 0.3s var(--easing-out);
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(12px);
+  transition:
+    opacity 0.4s var(--easing-out),
+    transform 0.4s var(--easing-out),
+    box-shadow 0.2s var(--easing-out),
+    border-color 0.2s;
 }
 
 .skill-category-card.in-view {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: calc(var(--card-i, 0) * 0.07s);
+  transition-delay: calc(var(--card-i, 0) * 0.06s);
 }
 
 .skill-category-card:hover {
-  border-color: var(--border-accent);
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-glow-blue);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
 }
 
 .skill-category-card.in-view:hover {
-  transform: translateY(-5px);
   opacity: 1;
 }
 
-/* Colored top stripe per category */
-.skill-category-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--cat-color, linear-gradient(90deg, var(--accent-blue), var(--accent-purple)));
-  opacity: 0.9;
-}
-
-/* Category number accent */
 .category-num {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-muted);
   letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   display: block;
 }
 
 .category-name {
-  font-size: 0.72rem;
-  font-weight: 800;
+  font-size: 0.8rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: var(--text-secondary);
   margin-bottom: 1rem;
   display: flex;
@@ -79,13 +60,12 @@
 }
 
 .category-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--cat-color, var(--accent-blue));
+  background: var(--accent);
   display: inline-block;
   flex-shrink: 0;
-  animation: bounceDot 2.5s ease-in-out infinite;
 }
 
 .skill-badges {
@@ -95,41 +75,36 @@
 }
 
 .skill-badge {
-  padding: 0.3rem 0.75rem;
+  padding: 0.25rem 0.7rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: var(--bg-base);
+  background: var(--bg-surface);
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-secondary);
   white-space: nowrap;
-  transition:
-    color 0.2s,
-    border-color 0.25s,
-    transform 0.25s var(--easing-spring),
-    background 0.2s,
-    box-shadow 0.25s;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
   cursor: default;
 }
 
 .skill-badge:hover {
   color: var(--text-primary);
-  border-color: rgba(255, 255, 255, 0.16);
-  transform: translateY(-2px) scale(1.04);
+  border-color: var(--border-strong);
 }
 
-/* Expert level badge — highlighted */
 .skill-badge--primary {
-  font-weight: 700;
-  color: var(--accent-blue);
-  border-color: rgba(0, 229, 255, 0.28);
-  background: rgba(0, 229, 255, 0.06);
+  font-weight: 600;
+  color: var(--accent);
+  border-color: rgba(0, 113, 227, 0.25);
+  background: var(--accent-dim);
 }
+
+[data-theme="dark"] .skill-badge--primary {
+  border-color: rgba(41, 151, 255, 0.25);
+}
+
 .skill-badge--primary:hover {
-  border-color: rgba(0, 229, 255, 0.55);
-  box-shadow: 0 2px 12px rgba(0, 229, 255, 0.15);
-  background: rgba(0, 229, 255, 0.1);
-  transform: translateY(-2px) scale(1.05);
+  border-color: var(--accent);
 }
 
 @media (max-width: 640px) {
