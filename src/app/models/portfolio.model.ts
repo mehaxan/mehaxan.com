@@ -82,11 +82,45 @@ export interface BlogPost {
   readingTime?: string;
 }
 
+export interface Education {
+  institution: string;
+  degree: string;
+  location: string;
+  /** ISO date string e.g. "2020-12-31" */
+  endDate: string;
+}
+
+export interface Activity {
+  organization: string;
+  role: string;
+  /** Human-readable duration e.g. "Aug 2018 – Apr 2021" */
+  duration: string;
+  highlights: string[];
+}
+
+export interface Talk {
+  title: string;
+  event: string;
+  year: number;
+  role: string;
+}
+
+export interface Publication {
+  title: string;
+  publisher: string;
+  year: number;
+  doi: string;
+}
+
 /** Root type — matches the shape of portfolio.json */
 export interface Portfolio {
   personal: PersonalInfo;
   experience: Experience[];
+  education?: Education[];
   skills: SkillCategory[];
-  projects: Project[];
-  blog: BlogPost[];
+  projects?: Project[];
+  blog?: BlogPost[];
+  activities?: Activity[];
+  talks?: Talk[];
+  publications?: Publication[];
 }

@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { Hero } from '../../components/hero/hero';
 import { About } from '../../components/about/about';
 import { Experience } from '../../components/experience/experience';
+import { Education } from '../../components/education/education';
 import { Projects } from '../../components/projects/projects';
+import { Beyond } from '../../components/beyond/beyond';
 import { Contact } from '../../components/contact/contact';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, About, Experience, Projects, Contact],
+  imports: [Hero, About, Experience, Education, Projects, Beyond, Contact],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

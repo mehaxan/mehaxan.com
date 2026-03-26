@@ -1,0 +1,223 @@
+:host { display: block; }
+
+.section-pad { padding: 6rem 0; }
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  margin-top: -0.5rem;
+  max-width: 560px;
+}
+
+/* Two-column layout */
+.beyond-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .beyond-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Column header */
+.col-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.col-header--spaced {
+  margin-top: 2rem;
+}
+
+.col-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+}
+
+.col-icon--blue {
+  background: var(--accent-blue-dim);
+  color: var(--accent-blue);
+  border-color: rgba(0, 229, 255, 0.2);
+}
+
+.col-icon--purple {
+  background: var(--accent-purple-dim);
+  color: var(--accent-purple);
+  border-color: rgba(184, 110, 255, 0.2);
+}
+
+.col-icon--green {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-green);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.col-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+/* Card stack */
+.cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Individual card */
+.beyond-card {
+  position: relative;
+  transition:
+    border-color 0.3s var(--easing-out),
+    transform 0.3s var(--easing-spring),
+    box-shadow 0.3s var(--easing-out);
+}
+
+.beyond-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow-blue);
+  border-color: var(--border-accent);
+}
+
+/* Activity card */
+.card-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.item-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+  line-height: 1.4;
+}
+
+.item-role {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  font-family: var(--font-mono);
+}
+
+.item-duration {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+
+.item-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.item-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.highlight-dot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: 0.45rem;
+}
+
+.highlight-dot--blue {
+  background: var(--accent-blue);
+  box-shadow: 0 0 6px rgba(0, 229, 255, 0.5);
+}
+
+/* Talk card */
+.talk-year-badge,
+.pub-year-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  margin-bottom: 0.5rem;
+  background: var(--accent-purple-dim);
+  color: var(--accent-purple);
+  border: 1px solid rgba(184, 110, 255, 0.25);
+}
+
+.pub-year-badge--green {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-green);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+.talk-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.meta-sep {
+  color: var(--text-muted);
+}
+
+.talk-event {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* Publication card */
+.pub-publisher {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+
+.doi-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--accent-green);
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  word-break: break-all;
+}
+
+.doi-link:hover {
+  opacity: 1;
+}
