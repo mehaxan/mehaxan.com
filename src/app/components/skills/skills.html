@@ -1,0 +1,25 @@
+<section class="skills-section section-pad" id="skills">
+  <div class="section-container">
+    <p class="section-label">Tech Stack</p>
+    <h2 class="section-title">Skills & Expertise</h2>
+
+    @if (portfolio$ | async; as data) {
+      <div class="skills-rows">
+        @for (cat of data.skills; track cat.category; let last = $last) {
+          <div class="skill-row" [class.skill-row--last]="last">
+            <div class="skill-row-label">
+              <span>{{ cat.category }}</span>
+            </div>
+            <div class="skill-row-badges">
+              @for (item of cat.items; track item.name) {
+                <span class="skill-badge" [class.skill-badge--primary]="item.level === 'expert'">
+                  {{ item.name }}
+                </span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>

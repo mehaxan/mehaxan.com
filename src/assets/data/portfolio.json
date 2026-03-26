@@ -1,0 +1,164 @@
+{
+  "personal": {
+    "name": "Mehedi Hasan",
+    "title": "Senior Software Engineer",
+    "tagline": "Building scalable web apps with Angular, Node & beyond",
+    "bio": "I'm a Senior Software Engineer with 6 years of experience crafting high-quality web applications. Currently at Brain Station 23, I specialise in Angular and front-end architecture — but I enjoy the full stack, from designing intuitive UIs to shipping reliable Node.js backends and managing cloud deployments. I love learning in public and building side projects that solve real problems.",
+    "email": "hello@mehaxan.dev",
+    "location": "Dhaka, Bangladesh",
+    "avatar": "",
+    "social": {
+      "github": "https://github.com/mehaxan",
+      "linkedin": "https://linkedin.com/in/mehaxan",
+      "twitter": "https://twitter.com/mehaxan",
+      "medium": "https://medium.com/@mehaxan"
+    }
+  },
+  "experience": [
+    {
+      "company": "Brain Station 23",
+      "companyUrl": "https://brainstation-23.com",
+      "role": "Senior Software Engineer",
+      "startDate": "2022-01-01",
+      "endDate": null,
+      "description": "Leading front-end development of enterprise-scale Angular applications serving hundreds of thousands of users.",
+      "highlights": [
+        "Architected and delivered complex Angular SPA modules with strict performance budgets",
+        "Introduced micro-frontend patterns, reducing deployment coupling across teams",
+        "Mentored junior engineers in Angular best practices, RxJS, and clean code principles",
+        "Collaborated with UX designers to build pixel-perfect, accessible component libraries",
+        "Championed CI/CD pipelines and automated testing to improve release confidence"
+      ],
+      "technologies": ["Angular", "TypeScript", "RxJS", "NgRx", "Node.js", "Docker", "Azure"]
+    },
+    {
+      "company": "Brain Station 23",
+      "companyUrl": "https://brainstation-23.com",
+      "role": "Software Engineer",
+      "startDate": "2021-01-01",
+      "endDate": "2021-12-31",
+      "highlights": [
+        "Developed and maintained multiple client-facing Angular applications",
+        "Integrated REST and GraphQL APIs with reactive Angular services",
+        "Optimised load performance, achieving 30% reduction in initial bundle size",
+        "Wrote comprehensive unit and e2e test suites with Jest and Cypress"
+      ],
+      "technologies": ["Angular", "TypeScript", "Node.js", "PostgreSQL", "AWS"]
+    },
+    {
+      "company": "AITS Idea Ltd",
+      "companyUrl": "",
+      "role": "Software Engineer",
+      "startDate": "2020-01-01",
+      "endDate": "2020-12-31",
+      "description": "Full-stack development of web products for domestic and international clients.",
+      "highlights": [
+        "Built dynamic React and Angular front-ends for client projects from scratch",
+        "Developed RESTful APIs in Node.js/Express, deployed on Linux servers",
+        "Designed and maintained MySQL and MongoDB databases",
+        "Collaborated directly with clients to gather requirements and deliver iteratively"
+      ],
+      "technologies": ["React", "Angular", "Node.js", "Express", "MySQL", "MongoDB"]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Frontend",
+      "items": [
+        { "name": "Angular", "level": "expert" },
+        { "name": "TypeScript", "level": "expert" },
+        { "name": "RxJS", "level": "expert" },
+        { "name": "NgRx", "level": "proficient" },
+        { "name": "React", "level": "proficient" },
+        { "name": "HTML5 / CSS3", "level": "expert" },
+        { "name": "Tailwind CSS", "level": "proficient" },
+        { "name": "UI / UX Design", "level": "proficient" }
+      ]
+    },
+    {
+      "category": "Backend",
+      "items": [
+        { "name": "Node.js", "level": "proficient" },
+        { "name": "Express", "level": "proficient" },
+        { "name": "NestJS", "level": "familiar" },
+        { "name": "REST APIs", "level": "expert" },
+        { "name": "GraphQL", "level": "proficient" },
+        { "name": "PostgreSQL", "level": "proficient" },
+        { "name": "MongoDB", "level": "proficient" },
+        { "name": "MySQL", "level": "proficient" }
+      ]
+    },
+    {
+      "category": "DevOps",
+      "items": [
+        { "name": "Docker", "level": "proficient" },
+        { "name": "GitHub Actions", "level": "proficient" },
+        { "name": "Azure", "level": "proficient" },
+        { "name": "AWS", "level": "familiar" },
+        { "name": "Cloudflare Workers", "level": "familiar" },
+        { "name": "Linux / Bash", "level": "proficient" },
+        { "name": "Nginx", "level": "familiar" }
+      ]
+    },
+    {
+      "category": "Other",
+      "items": [
+        { "name": "Git", "level": "expert" },
+        { "name": "Figma", "level": "proficient" },
+        { "name": "Agile / Scrum", "level": "expert" },
+        { "name": "Jest", "level": "proficient" },
+        { "name": "Cypress", "level": "familiar" },
+        { "name": "Technical Writing", "level": "familiar" }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "mehaxan",
+      "description": "Personal portfolio website built with Angular 21 and deployed on Cloudflare Workers. You're looking at it right now!",
+      "technologies": ["Angular", "TypeScript", "Tailwind CSS", "Cloudflare Workers"],
+      "url": "https://mehaxan.dev",
+      "github": "https://github.com/mehaxan/mehaxan",
+      "featured": true
+    },
+    {
+      "name": "Side Project 2",
+      "description": "A description of your side project goes here. Update this in portfolio.json or your Gist.",
+      "technologies": ["Angular", "Node.js", "MongoDB"],
+      "url": "",
+      "github": "",
+      "featured": false
+    },
+    {
+      "name": "Side Project 3",
+      "description": "A description of your side project goes here. Update this in portfolio.json or your Gist.",
+      "technologies": ["React", "TypeScript", "PostgreSQL"],
+      "url": "",
+      "github": "",
+      "featured": false
+    }
+  ],
+  "blog": [
+    {
+      "title": "Getting Started with Angular Signals",
+      "mediumUrl": "https://medium.com/@mehaxan",
+      "date": "2025-10-01",
+      "summary": "A practical guide to Angular Signals — the new reactivity primitive replacing Zone.js change detection in modern Angular applications.",
+      "readingTime": "6 min read"
+    },
+    {
+      "title": "Deploying Angular Apps to Cloudflare Workers",
+      "mediumUrl": "https://medium.com/@mehaxan",
+      "date": "2025-08-15",
+      "summary": "Step-by-step walkthrough of deploying an Angular SSR application to Cloudflare Workers using @angular/ssr and Wrangler.",
+      "readingTime": "8 min read"
+    },
+    {
+      "title": "Mastering RxJS in Angular",
+      "mediumUrl": "https://medium.com/@mehaxan",
+      "date": "2025-05-20",
+      "summary": "Deep dive into the RxJS operators every Angular developer should know, with real-world examples from production codebases.",
+      "readingTime": "10 min read"
+    }
+  ]
+}

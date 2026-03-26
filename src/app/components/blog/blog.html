@@ -1,0 +1,51 @@
+<section class="blog-section section-pad" id="blog">
+  <div class="section-container">
+    <div class="blog-header">
+      <div>
+        <p class="section-label">Writing</p>
+        <h2 class="section-title">From the Blog</h2>
+      </div>
+      @if (portfolio$ | async; as data) {
+        @if (data.personal.social.medium) {
+          <a [href]="data.personal.social.medium" target="_blank" rel="noopener noreferrer" class="view-all">
+            View all on Medium
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        }
+      }
+    </div>
+
+    @if (portfolio$ | async; as data) {
+      <div class="blog-grid">
+        @for (post of data.blog; track post.title) {
+          <article class="blog-card card">
+            <div class="blog-meta">
+              <time class="blog-date">{{ formatDate(post.date) }}</time>
+              @if (post.readingTime) {
+                <span class="blog-reading-time">{{ post.readingTime }}</span>
+              }
+            </div>
+
+            <h3 class="blog-title">{{ post.title }}</h3>
+            <p class="blog-summary">{{ post.summary }}</p>
+
+            <a
+              [href]="post.mediumUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="read-more"
+              [attr.aria-label]="'Read: ' + post.title"
+            >
+              Read on Medium
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </article>
+        }
+      </div>
+    }
+  </div>
+</section>

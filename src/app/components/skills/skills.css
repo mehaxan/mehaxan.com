@@ -1,0 +1,82 @@
+:host { display: block; }
+
+.section-pad { padding: 6rem 0; }
+
+/* Bordered row table: label left | badges right */
+.skills-rows {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.1rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+
+.skill-row--last {
+  border-bottom: none;
+}
+
+.skill-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.skill-row-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.skill-row-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.skill-badge {
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-base);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  cursor: default;
+}
+
+.skill-badge:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.skill-badge--primary {
+  font-weight: 700;
+  color: var(--text-primary);
+  border-color: rgba(0, 212, 255, 0.28);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.skill-badge--primary:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+}
+
+@media (max-width: 560px) {
+  .skill-row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    padding: 1rem 1.25rem;
+  }
+}

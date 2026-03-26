@@ -1,0 +1,72 @@
+<section class="exp-section section-pad" id="experience">
+  <div class="section-container">
+    <p class="section-label">Career</p>
+    <h2 class="section-title">Work Experience</h2>
+    <p class="section-sub">6 years of building things that matter, across two companies.</p>
+
+    @if (portfolio$ | async; as data) {
+      <div class="timeline">
+        @for (exp of data.experience; track exp.company + exp.startDate; let last = $last) {
+          <div class="timeline-item">
+            <!-- Rail -->
+            <div class="timeline-rail">
+              <div class="timeline-dot" [class.timeline-dot--active]="isCurrentRole(exp)"></div>
+              @if (!last) {
+                <div class="timeline-line"></div>
+              }
+            </div>
+
+            <!-- Card -->
+            <div class="exp-card card">
+              <div class="exp-header">
+                <div class="exp-header-left">
+                  <h3 class="exp-role">{{ exp.role }}</h3>
+                  <div class="exp-meta">
+                    @if (exp.companyUrl) {
+                      <a [href]="exp.companyUrl" target="_blank" rel="noopener noreferrer" class="exp-company">
+                        {{ exp.company }}
+                        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                        </svg>
+                      </a>
+                    } @else {
+                      <span class="exp-company exp-company--plain">{{ exp.company }}</span>
+                    }
+                    <span class="exp-sep">·</span>
+                    <span class="exp-dates">
+                      {{ formatDate(exp.startDate) }} — {{ exp.endDate ? formatDate(exp.endDate) : 'Present' }}
+                    </span>
+                    <span class="exp-sep">·</span>
+                    <span class="exp-duration">{{ duration(exp.startDate, exp.endDate) }}</span>
+                  </div>
+                </div>
+                @if (isCurrentRole(exp)) {
+                  <span class="current-badge">Current</span>
+                }
+              </div>
+
+              @if (exp.description) {
+                <p class="exp-desc">{{ exp.description }}</p>
+              }
+
+              <ul class="exp-highlights">
+                @for (h of exp.highlights; track h) {
+                  <li class="highlight-item">
+                    <span class="highlight-dot"></span>
+                    {{ h }}
+                  </li>
+                }
+              </ul>
+
+              <div class="exp-tech">
+                @for (tech of exp.technologies; track tech) {
+                  <span class="tech-pill">{{ tech }}</span>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,114 @@
+:host { display: block; }
+
+.section-pad { padding: 6rem 0 0; }
+
+.contact-inner {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 5rem;
+}
+
+.contact-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-label,
+.section-title,
+.contact-tagline,
+.email-btn,
+.divider,
+.social-links {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-tagline {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  margin-top: -0.25rem;
+}
+
+.email-btn {
+  font-size: 1rem;
+  padding: 0.875rem 2.5rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.divider-text {
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social-card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s, background 0.2s;
+}
+.social-card:hover {
+  color: var(--accent-blue);
+  border-color: var(--border-accent);
+  background: var(--accent-blue-dim);
+  transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+  margin-top: 0;
+  border-top: 1px solid var(--border);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footer-tech {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  opacity: 0.6;
+}
