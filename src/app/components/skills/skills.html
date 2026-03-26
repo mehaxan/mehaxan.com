@@ -2,15 +2,28 @@
   <div class="section-container">
     <p class="section-label">Tech Stack</p>
     <h2 class="section-title">Skills & Expertise</h2>
+    <p class="section-sub">Tools and technologies I use to build things people love.</p>
 
     @if (portfolio$ | async; as data) {
-      <div class="skills-rows">
-        @for (cat of data.skills; track cat.category; let last = $last) {
-          <div class="skill-row" [class.skill-row--last]="last">
-            <div class="skill-row-label">
-              <span>{{ cat.category }}</span>
+      <div class="skills-grid">
+        @for (cat of data.skills; track cat.category; let i = $index) {
+          <div
+            class="skill-category-card"
+            [class.in-view]="isVisible(i)"
+            [style.--card-i]="i"
+            [style.--cat-color]="colorFor(i)"
+            #skillCard
+            [attr.data-idx]="i"
+          >
+            <span class="category-num">0{{ i + 1 }}</span>
+            <div class="category-name">
+              <span class="category-dot"
+                [style.background]="colorFor(i)"
+                [style.animation-delay]="(i * 0.3) + 's'"
+              ></span>
+              {{ cat.category }}
             </div>
-            <div class="skill-row-badges">
+            <div class="skill-badges">
               @for (item of cat.items; track item.name) {
                 <span class="skill-badge" [class.skill-badge--primary]="item.level === 'expert'">
                   {{ item.name }}

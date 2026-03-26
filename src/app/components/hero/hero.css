@@ -12,39 +12,68 @@
   background: var(--bg-base);
 }
 
-/* Gradient orbs */
-.orb {
+/* ── Dot grid background ──────────────────────────────────── */
+.hero-grid {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
+  inset: 0;
   pointer-events: none;
-}
-.orb-1 {
-  width: 600px;
-  height: 600px;
-  top: -200px;
-  left: -200px;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.12) 0%, transparent 70%);
-  animation: float 8s ease-in-out infinite;
-}
-.orb-2 {
-  width: 500px;
-  height: 500px;
-  bottom: -150px;
-  right: -150px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%);
-  animation: float 10s ease-in-out infinite reverse;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.045;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
 }
 
+/* ── Morphic background blobs ─────────────────────────────── */
+.blob {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob-1 {
+  width: 700px;
+  height: 700px;
+  top: -250px;
+  left: -250px;
+  background: radial-gradient(circle at 40% 40%, rgba(0, 229, 255, 0.14) 0%, rgba(0, 229, 255, 0.04) 50%, transparent 70%);
+  filter: blur(60px);
+  animation: morphBlob 14s ease-in-out infinite, float 11s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 600px;
+  height: 600px;
+  bottom: -180px;
+  right: -180px;
+  background: radial-gradient(circle at 60% 60%, rgba(184, 110, 255, 0.14) 0%, rgba(184, 110, 255, 0.04) 50%, transparent 70%);
+  filter: blur(60px);
+  animation: morphBlob 18s ease-in-out infinite 3s reverse, float 14s ease-in-out infinite 1s;
+}
+
+.blob-3 {
+  width: 400px;
+  height: 400px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.05) 0%, rgba(184, 110, 255, 0.05) 50%, transparent 70%);
+  filter: blur(50px);
+  animation: morphBlob 11s ease-in-out infinite 5s, float 9s ease-in-out infinite 2s;
+}
+
+/* ── Hero content ─────────────────────────────────────────── */
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 720px;
+  max-width: 740px;
   margin: 0 auto;
 }
 
 .greeting {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
   font-weight: 500;
   margin-bottom: 0.75rem;
@@ -55,7 +84,7 @@
 }
 .greeting-hand {
   display: inline-block;
-  animation: wave 2.4s ease-in-out 1s 3;
+  animation: wave 2.4s ease-in-out 1.2s 3;
   transform-origin: 70% 70%;
 }
 @keyframes wave {
@@ -65,16 +94,37 @@
   60%      { transform: rotate(20deg); }
 }
 
+/* Living gradient name */
 .hero-name {
   font-size: clamp(2.75rem, 8vw, 5.5rem);
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue) 60%, var(--accent-purple) 100%);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue) 40%, var(--accent-purple) 70%, var(--accent-blue) 100%);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: gradientFlow 6s ease infinite;
+}
+
+/* Accent divider */
+.hero-divider {
+  width: 64px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  margin: 0.75rem auto 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-divider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: shimmer 2.5s var(--easing-out) infinite 1.5s;
 }
 
 .typewriter {
@@ -85,7 +135,6 @@
   font-family: var(--font-mono);
   min-height: 2rem;
 }
-.typewriter-text { /* inherits */ }
 .cursor {
   display: inline-block;
   margin-left: 2px;
@@ -97,9 +146,9 @@
 .tagline {
   font-size: 1.05rem;
   color: var(--text-secondary);
-  max-width: 540px;
+  max-width: 560px;
   margin: 0 auto 2rem;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .hero-actions {
@@ -110,9 +159,21 @@
   margin-bottom: 2rem;
 }
 
+.hero-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.hero-resume-btn svg {
+  transition: transform 0.3s var(--easing-spring);
+}
+.hero-resume-btn:hover svg {
+  transform: translateY(-2px) scale(1.1);
+}
+
 .hero-social {
   display: flex;
-  gap: 1rem;
+  gap: 0.85rem;
   justify-content: center;
   margin-bottom: 3rem;
 }
@@ -121,45 +182,55 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: var(--bg-card);
   border: 1px solid var(--border);
   color: var(--text-secondary);
-  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+  transition: color 0.25s var(--easing-out), border-color 0.25s, transform 0.3s var(--easing-spring), box-shadow 0.3s var(--easing-out);
 }
 .social-icon:hover {
   color: var(--accent-blue);
   border-color: var(--border-accent);
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 8px 24px rgba(0, 229, 255, 0.22);
 }
 
-/* Scroll hint */
+/* ── Scroll indicator (elevator) ──────────────────────────── */
 .scroll-hint {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   color: var(--text-muted);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-.scroll-dot {
-  width: 4px;
-  height: 28px;
-  border-radius: 2px;
-  background: linear-gradient(to bottom, var(--accent-blue), transparent);
-  animation: scrollPulse 1.8s ease-in-out infinite;
-}
-@keyframes scrollPulse {
-  0%   { opacity: 0.3; transform: translateY(0); }
-  50%  { opacity: 1;   transform: translateY(6px); }
-  100% { opacity: 0.3; transform: translateY(0); }
+  font-family: var(--font-mono);
 }
 
-/* Floating pills */
+.scroll-track {
+  width: 2px;
+  height: 44px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-elevator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
+  animation: scrollElevator 2s var(--easing-in-out) infinite;
+}
+
+/* ── Floating tech pills ──────────────────────────────────── */
 .pills-container {
   position: absolute;
   inset: 0;
@@ -167,7 +238,6 @@
   display: none;
 }
 
-/* Only show on wider screens */
 @media (min-width: 1100px) {
   .pills-container { display: block; }
 
@@ -176,6 +246,7 @@
     opacity: 0;
     animation: pillFloat 4s ease-in-out infinite;
     pointer-events: none;
+    box-shadow: 0 2px 14px rgba(0, 229, 255, 0.14);
   }
 
   .floating-pill:nth-child(1)  { top: 18%; left: 6%;  animation-delay: 0s; }
@@ -190,11 +261,12 @@
 
 @keyframes pillFloat {
   0%   { opacity: 0;   transform: translateY(10px);  }
-  20%  { opacity: 0.7; transform: translateY(0);     }
-  80%  { opacity: 0.7; transform: translateY(-5px);  }
-  100% { opacity: 0;   transform: translateY(-10px); }
+  20%  { opacity: 0.75; transform: translateY(0);    }
+  80%  { opacity: 0.75; transform: translateY(-6px); }
+  100% { opacity: 0;   transform: translateY(-12px); }
 }
 
 @media (max-width: 480px) {
   .hero-actions { flex-direction: column; align-items: center; }
 }
+

@@ -35,22 +35,31 @@
         <!-- Avatar / Stats side -->
         <div class="about-visual">
 
-          <!-- Avatar -->
-          <div class="avatar-wrapper">
-            @if (data.personal.avatar) {
-              <img [src]="data.personal.avatar" [alt]="data.personal.name" class="avatar-img" />
-            } @else {
-              <div class="avatar-initials">
-                <span>MH</span>
-              </div>
-            }
-            <div class="avatar-ring"></div>
+          <!-- Avatar with 3D tilt -->
+          <div
+            class="avatar-wrapper"
+            (mousemove)="onAvatarTilt($event)"
+            (mouseleave)="onAvatarReset($event)"
+          >
+            <!-- Morphic halo behind avatar -->
+            <div class="avatar-halo" aria-hidden="true"></div>
+
+            <!-- Inner 3D tiltable container -->
+            <div class="avatar-3d">
+              @if (data.personal.avatar) {
+                <img [src]="data.personal.avatar" [alt]="data.personal.name" class="avatar-img" />
+              } @else {
+                <div class="avatar-initials">
+                  <span>MH</span>
+                </div>
+              }
+            </div>
           </div>
 
           <!-- Stats grid -->
-          <div class="stats-grid">
-            @for (stat of stats; track stat.label) {
-              <div class="stat-card">
+          <div class="stats-grid" #statsGrid [class.in-view]="statsInView()">
+            @for (stat of stats; track stat.label; let i = $index) {
+              <div class="stat-card card--glass" [class.in-view]="statsInView()" [style.--stagger]="i">
                 <span class="stat-value gradient-text">{{ stat.value }}</span>
                 <span class="stat-label">{{ stat.label }}</span>
               </div>
