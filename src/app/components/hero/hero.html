@@ -1,42 +1,31 @@
-<section class="hero noise-overlay" id="hero">
-  <!-- Morphic background blobs -->
-  <div class="blob blob-1" aria-hidden="true"></div>
-  <div class="blob blob-2" aria-hidden="true"></div>
-  <div class="blob blob-3" aria-hidden="true"></div>
-
-  <!-- Dot grid layer -->
-  <div class="hero-grid" aria-hidden="true"></div>
-
+<section class="hero" id="hero">
   <div class="hero-content">
     @if (portfolio$ | async; as data) {
       <!-- Greeting -->
-      <p class="greeting animate-reveal-up">
-        <span class="greeting-hand">👋</span> Hello, I'm
+      <p class="greeting animate-fade-in">
+        Hello, I'm
       </p>
 
       <!-- Name -->
-      <h1 class="hero-name animate-reveal-up delay-100">
+      <h1 class="hero-name animate-fade-in-up delay-100">
         {{ data.personal.name }}
       </h1>
 
-      <!-- Divider accent -->
-      <div class="hero-divider animate-reveal-up delay-200" aria-hidden="true"></div>
-
       <!-- Typewriter -->
-      <p class="typewriter animate-reveal-up delay-300">
+      <p class="typewriter animate-fade-in-up delay-200">
         <span class="typewriter-text">{{ typewriterText() }}</span><span class="cursor" [class.cursor--hidden]="!showCursor()">|</span>
       </p>
 
       <!-- Tagline -->
-      <p class="tagline animate-reveal-up delay-400">
+      <p class="tagline animate-fade-in-up delay-300">
         {{ data.personal.tagline }}
       </p>
 
       <!-- CTAs -->
-      <div class="hero-actions animate-reveal-up delay-500">
+      <div class="hero-actions animate-fade-in-up delay-400">
         <a class="btn-primary" href="#projects" (click)="scrollTo('#projects', $event)">
           View My Work
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
@@ -46,11 +35,9 @@
           rel="noopener noreferrer"
           class="btn-outline hero-resume-btn"
         >
-          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
             <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
           </svg>
           Résumé
         </a>
@@ -60,7 +47,7 @@
       </div>
 
       <!-- Social links -->
-      <div class="hero-social animate-reveal-up delay-600">
+      <div class="hero-social animate-fade-in-up delay-500">
         @if (data.personal.social.github) {
           <a [href]="data.personal.social.github" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -92,19 +79,11 @@
       </div>
 
       <!-- Scroll indicator -->
-      <div class="scroll-hint animate-reveal-up delay-700">
-        <span>Scroll</span>
+      <div class="scroll-hint animate-fade-in-up delay-600">
         <div class="scroll-track">
           <div class="scroll-elevator"></div>
         </div>
       </div>
-    }
-  </div>
-
-  <!-- Floating tech pills -->
-  <div class="pills-container" aria-hidden="true">
-    @for (pill of pills; track pill; let i = $index) {
-      <span class="tech-pill floating-pill" [style.animation-delay]="(i * 0.15) + 's'">{{ pill }}</span>
     }
   </div>
 </section>
