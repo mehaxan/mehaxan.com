@@ -1,109 +1,100 @@
-<section class="beyond-section section-pad" id="beyond">
-  <div class="section-container">
-    <p class="section-label">Beyond Engineering</p>
-    <h2 class="section-title">Community, Talks & Research</h2>
-    <p class="section-sub">Leadership, speaking, and academic contributions outside day-to-day engineering work.</p>
+<section class="beyond section" id="beyond">
+  <span class="gutter-label">§ 07 — Beyond</span>
+
+  <div class="shell beyond-shell">
+    <header class="beyond-head" [appReveal]="0">
+      <span class="eyebrow">Off the clock</span>
+      <h2 class="display-md">
+        Community, talks &amp; <span class="italic-accent">research traces.</span>
+      </h2>
+    </header>
 
     @if (portfolio$ | async; as data) {
-      <div class="beyond-grid">
-
-        <!-- Activities / Leadership -->
-        @if (data.activities && data.activities.length > 0) {
-          <div class="beyond-col">
-            <div class="col-header">
-              <div class="col-icon col-icon--blue" aria-hidden="true">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-              </div>
-              <h3 class="col-title">Leadership & Activities</h3>
-            </div>
-            <div class="cards-stack">
-              @for (activity of data.activities; track activity.organization) {
-                <div class="beyond-card card">
-                  <div class="card-top-row">
-                    <div>
-                      <h4 class="item-title">{{ activity.organization }}</h4>
-                      <span class="item-role">{{ activity.role }}</span>
-                    </div>
-                    <span class="item-duration">{{ activity.duration }}</span>
-                  </div>
-                  <ul class="item-highlights">
-                    @for (h of activity.highlights; track h) {
-                      <li>
-                        <span class="highlight-dot highlight-dot--blue"></span>
-                        {{ h }}
-                      </li>
-                    }
-                  </ul>
+      <!-- Activities -->
+      @if (data.activities && data.activities.length > 0) {
+        <article class="stack stack--left" [appReveal]="0">
+          <aside class="stack-side" aria-hidden="true">
+            <span class="stack-label">Leadership · Activities</span>
+          </aside>
+          <div class="stack-body">
+            @for (activity of data.activities; track activity.organization; let i = $index) {
+              <div class="entry" [appReveal]="i * 60">
+                <div class="entry-head">
+                  <span class="entry-num">A.0{{ i + 1 }}</span>
+                  <span class="entry-when">{{ activity.duration }}</span>
                 </div>
-              }
-            </div>
+                <h3 class="entry-title">
+                  {{ activity.role }}
+                  <span class="entry-at"> — </span>
+                  <span class="entry-org">{{ activity.organization }}</span>
+                </h3>
+                <ul class="entry-points">
+                  @for (h of activity.highlights; track h) {
+                    <li><span class="point-rule"></span><span>{{ h }}</span></li>
+                  }
+                </ul>
+              </div>
+            }
           </div>
-        }
+        </article>
+      }
 
-        <!-- Talks & Publications column -->
-        <div class="beyond-col">
-
-          <!-- Talks -->
-          @if (data.talks && data.talks.length > 0) {
-            <div class="col-header">
-              <div class="col-icon col-icon--purple" aria-hidden="true">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                  <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                </svg>
-              </div>
-              <h3 class="col-title">Talks & Speaking</h3>
-            </div>
-            <div class="cards-stack">
-              @for (talk of data.talks; track talk.title) {
-                <div class="beyond-card card">
-                  <div class="talk-year-badge">{{ talk.year }}</div>
-                  <h4 class="item-title">{{ talk.title }}</h4>
-                  <div class="talk-meta">
-                    <span class="item-role">{{ talk.role }}</span>
-                    <span class="meta-sep">·</span>
-                    <span class="talk-event">{{ talk.event }}</span>
-                  </div>
+      <!-- Talks -->
+      @if (data.talks && data.talks.length > 0) {
+        <article class="stack stack--right" [appReveal]="0">
+          <aside class="stack-side" aria-hidden="true">
+            <span class="stack-label">Talks · Speaking</span>
+          </aside>
+          <div class="stack-body">
+            @for (talk of data.talks; track talk.title; let i = $index) {
+              <div class="entry entry--row" [appReveal]="i * 60">
+                <span class="entry-year">{{ talk.year }}</span>
+                <div class="entry-line"></div>
+                <div class="entry-content">
+                  <h3 class="entry-title entry-title--sm">{{ talk.title }}</h3>
+                  <p class="entry-meta">
+                    <span class="entry-role">{{ talk.role }}</span>
+                    <span class="entry-sep">·</span>
+                    <span>{{ talk.event }}</span>
+                  </p>
                 </div>
-              }
-            </div>
-          }
-
-          <!-- Publications -->
-          @if (data.publications && data.publications.length > 0) {
-            <div class="col-header col-header--spaced">
-              <div class="col-icon col-icon--green" aria-hidden="true">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                  <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                </svg>
               </div>
-              <h3 class="col-title">Publications</h3>
-            </div>
-            <div class="cards-stack">
-              @for (pub of data.publications; track pub.doi) {
-                <div class="beyond-card card">
-                  <div class="pub-year-badge pub-year-badge--green">{{ pub.year }}</div>
-                  <h4 class="item-title">{{ pub.title }}</h4>
-                  <p class="pub-publisher">{{ pub.publisher }}</p>
-                  <a
-                    [href]="doiUrl(pub.doi)"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="doi-link"
-                  >
-                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
-                    </svg>
-                    DOI: {{ pub.doi }}
-                  </a>
-                </div>
-              }
-            </div>
-          }
+            }
+          </div>
+        </article>
+      }
 
-        </div>
-      </div>
+      <!-- Publications -->
+      @if (data.publications && data.publications.length > 0) {
+        <article class="stack stack--left" [appReveal]="0">
+          <aside class="stack-side" aria-hidden="true">
+            <span class="stack-label">Publications · Research</span>
+          </aside>
+          <div class="stack-body">
+            @for (pub of data.publications; track pub.doi; let i = $index) {
+              <div class="entry entry--pub" [appReveal]="i * 60">
+                <div class="entry-head">
+                  <span class="entry-num">P.0{{ i + 1 }}</span>
+                  <span class="entry-when">{{ pub.year }}</span>
+                </div>
+                <h3 class="entry-title entry-title--sm">{{ pub.title }}</h3>
+                <p class="entry-meta">{{ pub.publisher }}</p>
+                <a
+                  [href]="doiUrl(pub.doi)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="entry-link"
+                >
+                  doi.org/{{ pub.doi }}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M7 17L17 7M17 7H8M17 7v9"/>
+                  </svg>
+                </a>
+              </div>
+            }
+          </div>
+        </article>
+      }
     }
   </div>
 </section>
