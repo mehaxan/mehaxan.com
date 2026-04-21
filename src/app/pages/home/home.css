@@ -1,8 +1,1 @@
 :host { display: block; }
-
-.section-divider {
-  height: 1px;
-  max-width: 880px;
-  margin: 0 auto;
-  background: var(--border);
-}

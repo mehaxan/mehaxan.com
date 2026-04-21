@@ -1,99 +1,79 @@
-<header class="nav-bar" [class.scrolled]="scrolled()">
-  <div class="nav-inner">
-    <!-- Logo -->
-    <a class="nav-logo" href="#" (click)="scrollTo('#hero', $event)">
-      <span class="logo-bracket">&lt;</span>mehaxan<span class="logo-bracket">/&gt;</span>
+<header class="nav-shell" [class.is-scrolled]="scrolled()">
+  <div class="nav-pill">
+    <a class="nav-mark" href="#hero" (click)="scrollTo('#hero', $event)" aria-label="Mehaxan — home">
+      <span class="mark-glyph">M</span>
+      <span class="mark-text">mehaxan</span>
+      <span class="mark-cursor" aria-hidden="true">_</span>
     </a>
 
-    <!-- Desktop links -->
-    <nav class="nav-links">
+    <nav class="nav-rail" aria-label="Section navigation">
       @for (link of links; track link.href) {
         <a
-          class="nav-link"
-          [class.active]="activeSection() === link.href.slice(1)"
+          class="nav-rail-link"
+          [class.is-active]="activeSection() === link.href.slice(1)"
           [href]="link.href"
           (click)="scrollTo(link.href, $event)"
         >
-          {{ link.label }}
+          <span class="rail-dot" aria-hidden="true"></span>
+          <span class="rail-label">{{ link.label }}</span>
         </a>
       }
-
-      <!-- Theme toggle -->
-      <button
-        class="theme-toggle"
-        (click)="themeService.toggle()"
-        [attr.aria-label]="themeService.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
-        [title]="themeService.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
-      >
-        @if (themeService.theme() === 'dark') {
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-        } @else {
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-          </svg>
-        }
-      </button>
-
-      <a
-        class="btn-primary nav-cta"
-        href="mailto:hello@mehaxan.dev"
-      >
-        Hire Me
-      </a>
     </nav>
 
-    <!-- Mobile hamburger -->
-    <button class="hamburger" (click)="toggleMobile()" [attr.aria-expanded]="mobileOpen()" aria-label="Toggle navigation">
-      <span class="bar" [class.bar--open-1]="mobileOpen()"></span>
-      <span class="bar" [class.bar--open-2]="mobileOpen()"></span>
-      <span class="bar" [class.bar--open-3]="mobileOpen()"></span>
-    </button>
-  </div>
-
-  <!-- Mobile backdrop -->
-  <div class="mobile-backdrop" [class.mobile-backdrop--visible]="mobileOpen()" (click)="toggleMobile()"></div>
-
-  <!-- Mobile drawer — always in DOM, slides in/out via CSS -->
-  <nav class="mobile-nav" [class.mobile-nav--open]="mobileOpen()" [attr.aria-hidden]="!mobileOpen()">
-    @for (link of links; track link.href) {
-      <a
-        class="mobile-link"
-        [class.active]="activeSection() === link.href.slice(1)"
-        [href]="link.href"
-        (click)="scrollTo(link.href, $event)"
-      >
-        {{ link.label }}
-      </a>
-    }
-    <div class="mobile-footer">
-      <a class="btn-primary mobile-cta" href="mailto:hello@mehaxan.dev">Hire Me</a>
+    <div class="nav-tools">
       <button
-        class="theme-toggle theme-toggle--mobile"
+        class="theme-toggle"
+        type="button"
         (click)="themeService.toggle()"
         [attr.aria-label]="themeService.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+        [attr.data-theme]="themeService.theme()"
       >
-        @if (themeService.theme() === 'dark') {
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        <span class="toggle-track" aria-hidden="true">
+          <span class="toggle-thumb"></span>
+          <svg class="toggle-icon toggle-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/>
           </svg>
-          Light mode
-        } @else {
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          <svg class="toggle-icon toggle-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
           </svg>
-          Dark mode
-        }
+        </span>
       </button>
+
+      <button
+        class="hamburger"
+        type="button"
+        (click)="toggleMobile()"
+        [attr.aria-expanded]="mobileOpen()"
+        aria-label="Toggle menu"
+      >
+        <span class="bar" [class.is-open-1]="mobileOpen()"></span>
+        <span class="bar" [class.is-open-2]="mobileOpen()"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile sheet -->
+  <div class="mobile-backdrop" [class.is-visible]="mobileOpen()" (click)="toggleMobile()" aria-hidden="true"></div>
+  <nav class="mobile-sheet" [class.is-open]="mobileOpen()" [attr.aria-hidden]="!mobileOpen()">
+    <p class="mobile-eyebrow">Index</p>
+    <ul>
+      @for (link of links; track link.href; let i = $index) {
+        <li>
+          <a
+            class="mobile-link"
+            [class.is-active]="activeSection() === link.href.slice(1)"
+            [href]="link.href"
+            (click)="scrollTo(link.href, $event)"
+          >
+            <span class="mobile-num">0{{ i + 1 }}</span>
+            <span>{{ link.label }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+    <div class="mobile-foot">
+      <span class="status-pill"><span class="dot"></span>Available · 2026</span>
     </div>
   </nav>
 </header>
