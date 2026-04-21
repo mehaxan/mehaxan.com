@@ -18,6 +18,8 @@ import { MagneticDirective } from '../../directives/magnetic.directive';
   styleUrl: './contact.css',
 })
 export class Contact implements OnInit, OnDestroy {
+  private static readonly CLOCK_UPDATE_INTERVAL_MS = 30_000;
+
   readonly portfolio$ = inject(PortfolioService).portfolio$;
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
@@ -29,7 +31,7 @@ export class Contact implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (!this.isBrowser) return;
     this.tick();
-    this.clockTimer = setInterval(() => this.tick(), 30_000);
+    this.clockTimer = setInterval(() => this.tick(), Contact.CLOCK_UPDATE_INTERVAL_MS);
   }
 
   ngOnDestroy(): void {

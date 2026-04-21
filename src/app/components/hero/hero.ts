@@ -20,6 +20,9 @@ const ROLE_PHRASES = [
   'Side-Project Addict',
 ];
 
+const ROLE_ROTATION_INTERVAL_MS = 2400;
+const CLOCK_UPDATE_INTERVAL_MS = 30_000;
+
 @Component({
   selector: 'app-hero',
   imports: [AsyncPipe, MagneticDirective],
@@ -44,10 +47,10 @@ export class Hero implements OnInit, OnDestroy {
 
     this.rotateTimer = setInterval(() => {
       this.activeRoleIndex.update((i) => (i + 1) % this.roles.length);
-    }, 2400);
+    }, ROLE_ROTATION_INTERVAL_MS);
 
     this.updateClock();
-    this.clockTimer = setInterval(() => this.updateClock(), 30_000);
+    this.clockTimer = setInterval(() => this.updateClock(), CLOCK_UPDATE_INTERVAL_MS);
   }
 
   ngOnDestroy(): void {

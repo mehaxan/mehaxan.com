@@ -16,6 +16,9 @@ import { PortfolioService } from '../../services/portfolio.service';
 import { Project } from '../../models/portfolio.model';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
+/** Minimum pointer travel (px) that should disqualify a card click at drag-end. */
+const DRAG_CLICK_THRESHOLD_PX = 6;
+
 @Component({
   selector: 'app-projects',
   imports: [AsyncPipe, ScrollRevealDirective],
@@ -104,7 +107,7 @@ export class Projects implements OnInit, OnDestroy {
 
   /** Suppress link clicks at the end of a drag */
   onCardClick(event: MouseEvent): void {
-    if (this.dragMoved > 6) {
+    if (this.dragMoved > DRAG_CLICK_THRESHOLD_PX) {
       event.preventDefault();
       event.stopPropagation();
     }
