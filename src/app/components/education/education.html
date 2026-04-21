@@ -1,32 +1,39 @@
-<section class="edu-section section-pad" id="education">
-  <div class="section-container">
-    <p class="section-label">Academic Background</p>
-    <h2 class="section-title">Education</h2>
-    <p class="section-sub">The foundation that started the journey.</p>
+<section class="edu section" id="education">
+  <span class="gutter-label">§ 03 — Schooling</span>
 
+  <div class="shell edu-shell">
     @if (portfolio$ | async; as data) {
       @if (data.education && data.education.length > 0) {
-        <div class="edu-list">
-          @for (edu of data.education; track edu.institution) {
-            <div class="edu-card card">
-              <div class="edu-icon" aria-hidden="true">
-                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <path d="M12 14l9-5-9-5-9 5 9 5z"/>
-                  <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                </svg>
-              </div>
-              <div class="edu-body">
-                <h3 class="edu-degree">{{ edu.degree }}</h3>
-                <div class="edu-meta">
-                  <span class="edu-institution">{{ edu.institution }}</span>
-                  <span class="edu-sep">·</span>
-                  <span class="edu-location">{{ edu.location }}</span>
-                  <span class="edu-sep">·</span>
-                  <span class="edu-year">Graduated {{ formatYear(edu.endDate) }}</span>
+        <div class="edu-head" [appReveal]="0">
+          <span class="eyebrow">Where it started</span>
+          <h2 class="display-md">
+            The page <span class="italic-accent">before page one.</span>
+          </h2>
+        </div>
+
+        <div class="ribbon" [appReveal]="100">
+          <div class="ribbon-line" aria-hidden="true">
+            <span class="ribbon-tick ribbon-tick--start"></span>
+            <span class="ribbon-fill"></span>
+            <span class="ribbon-tick ribbon-tick--end"></span>
+          </div>
+
+          <ol class="ribbon-list" role="list">
+            @for (edu of data.education; track edu.institution; let i = $index) {
+              <li class="bead">
+                <span class="bead-year">{{ formatYear(edu.endDate) }}</span>
+                <span class="bead-dot" aria-hidden="true"></span>
+                <div class="bead-body">
+                  <h3 class="bead-degree">{{ edu.degree }}</h3>
+                  <p class="bead-meta">
+                    <span class="bead-inst">{{ edu.institution }}</span>
+                    <span class="bead-sep">·</span>
+                    <span>{{ edu.location }}</span>
+                  </p>
                 </div>
-              </div>
-            </div>
-          }
+              </li>
+            }
+          </ol>
         </div>
       }
     }

@@ -1,31 +1,47 @@
-import { Component, HostListener, inject, signal, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+  inject,
+  signal,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ThemeService } from '../../services/theme.service';
 
-interface NavLink { label: string; href: string; }
+interface NavLink {
+  label: string;
+  href: string;
+}
 
 @Component({
   selector: 'app-nav',
   imports: [],
   templateUrl: './nav.html',
-  styleUrl: './nav.css'
+  styleUrl: './nav.css',
 })
 export class Nav implements OnInit, OnDestroy {
   readonly themeService = inject(ThemeService);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   readonly links: NavLink[] = [
-    { label: 'About',      href: '#about' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Projects',   href: '#projects' },
-    { label: 'Contact',    href: '#contact' },
+    { label: 'Index', href: '#hero' },
+    { label: 'About', href: '#about' },
+    { label: 'Work', href: '#experience' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Writing', href: '#blog' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   readonly scrolled = signal(false);
   readonly mobileOpen = signal(false);
-  readonly activeSection = signal<string>('');
+  readonly activeSection = signal<string>('hero');
 
   #observer: IntersectionObserver | null = null;
 
   ngOnInit(): void {
+    if (!this.isBrowser) return;
     this.#observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -34,13 +50,11 @@ export class Nav implements OnInit, OnDestroy {
           }
         }
       },
-      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 },
     );
-
-    // Observe all sections with an id
-    document.querySelectorAll('section[id]').forEach(section => {
-      this.#observer!.observe(section);
-    });
+    document
+      .querySelectorAll('section[id]')
+      .forEach((section) => this.#observer!.observe(section));
   }
 
   ngOnDestroy(): void {
@@ -49,18 +63,18 @@ export class Nav implements OnInit, OnDestroy {
 
   @HostListener('window:scroll')
   onScroll(): void {
-    this.scrolled.set(window.scrollY > 40);
+    if (!this.isBrowser) return;
+    this.scrolled.set(window.scrollY > 24);
   }
 
   toggleMobile(): void {
-    this.mobileOpen.update(v => !v);
+    this.mobileOpen.update((v) => !v);
   }
 
   scrollTo(id: string, event: Event): void {
     event.preventDefault();
     this.mobileOpen.set(false);
-    const el = document.querySelector(id);
+    const el = this.isBrowser ? document.querySelector(id) : null;
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
-

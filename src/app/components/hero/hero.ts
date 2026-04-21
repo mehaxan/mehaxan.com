@@ -1,73 +1,97 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import {
+  Component,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+  inject,
+  signal,
+} from '@angular/core';
+import { AsyncPipe, isPlatformBrowser } from '@angular/common';
 import { PortfolioService } from '../../services/portfolio.service';
-import { PersonalInfo } from '../../models/portfolio.model';
-import { Subscription } from 'rxjs';
+import { MagneticDirective } from '../../directives/magnetic.directive';
 
-const TYPEWRITER_PHRASES = [
+const ROLE_PHRASES = [
   'Senior Software Engineer',
   'Angular Architect',
-  'Full-Stack Developer',
-  'UI / UX Enthusiast',
+  'Full-Stack Builder',
+  'UI / UX Tinkerer',
   'DevOps Practitioner',
-  'Side Project Builder',
+  'Side-Project Addict',
 ];
 
-const TECH_PILLS = ['Angular', 'TypeScript', 'RxJS', 'Node.js', 'React', 'Docker', 'Azure', 'NgRx'];
+const ROLE_ROTATION_INTERVAL_MS = 2400;
+const CLOCK_UPDATE_INTERVAL_MS = 30_000;
 
 @Component({
   selector: 'app-hero',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, MagneticDirective],
   templateUrl: './hero.html',
-  styleUrl: './hero.css'
+  styleUrl: './hero.css',
 })
 export class Hero implements OnInit, OnDestroy {
   private readonly svc = inject(PortfolioService);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   readonly portfolio$ = this.svc.portfolio$;
-  readonly pills = TECH_PILLS;
+  readonly roles = ROLE_PHRASES;
 
-  readonly typewriterText = signal('');
-  readonly showCursor = signal(true);
+  readonly activeRoleIndex = signal(0);
+  readonly clock = signal('');
+  readonly pointer = signal({ x: 50, y: 50 });
 
-  private phraseIndex = 0;
-  private charIndex = 0;
-  private isDeleting = false;
-  private timer: ReturnType<typeof setTimeout> | null = null;
-  private cursorTimer: ReturnType<typeof setInterval> | null = null;
-  private sub?: Subscription;
+  private rotateTimer: ReturnType<typeof setInterval> | null = null;
+  private clockTimer: ReturnType<typeof setInterval> | null = null;
 
   ngOnInit(): void {
-    this.tick();
-    this.cursorTimer = setInterval(() => this.showCursor.update(v => !v), 530);
+    if (!this.isBrowser) return;
+
+    this.rotateTimer = setInterval(() => {
+      this.activeRoleIndex.update((i) => (i + 1) % this.roles.length);
+    }, ROLE_ROTATION_INTERVAL_MS);
+
+    this.updateClock();
+    this.clockTimer = setInterval(() => this.updateClock(), CLOCK_UPDATE_INTERVAL_MS);
   }
 
   ngOnDestroy(): void {
-    if (this.timer) clearTimeout(this.timer);
-    if (this.cursorTimer) clearInterval(this.cursorTimer);
-    this.sub?.unsubscribe();
+    if (this.rotateTimer) clearInterval(this.rotateTimer);
+    if (this.clockTimer) clearInterval(this.clockTimer);
   }
 
-  private tick(): void {
-    const phrase = TYPEWRITER_PHRASES[this.phraseIndex];
-    if (this.isDeleting) {
-      this.typewriterText.set(phrase.slice(0, --this.charIndex));
-    } else {
-      this.typewriterText.set(phrase.slice(0, ++this.charIndex));
-    }
-    let delay = this.isDeleting ? 50 : 80;
-    if (!this.isDeleting && this.charIndex === phrase.length) {
-      delay = 2000;
-      this.isDeleting = true;
-    } else if (this.isDeleting && this.charIndex === 0) {
-      this.isDeleting = false;
-      this.phraseIndex = (this.phraseIndex + 1) % TYPEWRITER_PHRASES.length;
-      delay = 400;
-    }
-    this.timer = setTimeout(() => this.tick(), delay);
+  @HostListener('window:mousemove', ['$event'])
+  onMove(e: MouseEvent): void {
+    if (!this.isBrowser) return;
+    this.pointer.set({
+      x: (e.clientX / window.innerWidth) * 100,
+      y: (e.clientY / window.innerHeight) * 100,
+    });
   }
 
   scrollTo(id: string, event: Event): void {
     event.preventDefault();
+    if (!this.isBrowser) return;
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  private updateClock(): void {
+    try {
+      const now = new Date().toLocaleTimeString('en-GB', {
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: 'Asia/Dhaka',
+      });
+      this.clock.set(`Dhaka ${now}`);
+    } catch {
+      this.clock.set('Dhaka');
+    }
+  }
+
+  firstName(full: string): string {
+    return full.trim().split(/\s+/)[0] ?? full;
+  }
+
+  lastName(full: string): string {
+    const parts = full.trim().split(/\s+/);
+    return parts.length > 1 ? parts.slice(1).join(' ') : '';
   }
 }
