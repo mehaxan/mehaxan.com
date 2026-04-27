@@ -127,22 +127,82 @@
       "name": "mehaxan",
       "description": "Personal portfolio website built with Angular 21 and deployed on Cloudflare Workers. You're looking at it right now!",
       "technologies": ["Angular", "TypeScript", "Tailwind CSS", "Cloudflare Workers"],
-      "url": "https://mehaxan.dev",
-      "github": "https://github.com/mehaxan/mehaxan",
+      "url": "https://mehaxan.com",
+      "github": "https://github.com/mehaxan/mehaxan.com",
       "featured": true
     },
     {
-      "name": "Side Project 2",
-      "description": "A description of your side project goes here. Update this in portfolio.json or your Gist.",
-      "technologies": ["Angular", "Node.js", "MongoDB"],
+      "name": "geologiQ",
+      "description": "Integrated Unity engine with Angular app for real-time 3D rendering of Wellbore elements (e.g., Experiences, Infrastructures). Achieved 150% performance boost through optimized rendering, data fetching, and WebSocket technology for real-time updates. Incorporated cutting-edge features, enabling real-time visual changes based on dynamic data for interactive 3D element customization. Utilized @ngneat/elf to effectively manage application states and settings, enhancing user experience and system maintainability.",
+      "technologies": ["Angular"],
+      "url": "",
+      "github": "",
+      "featured": true
+    },
+    {
+      "name": "logistiQ",
+      "description": "Spearheaded the development of an innovative Angular-based logistic solution for a prominent Well company, resulting in a significant 30% improvement in overall operational efficiency. Successfully integrated cutting-edge features and technologies, leading to a 20% reduction in logistics-related costs and delivering a 25% increase in customer satisfaction through enhanced tracking and real-time updates.",
+      "technologies": ["Angular"],
       "url": "",
       "github": "",
       "featured": false
     },
     {
-      "name": "Side Project 3",
-      "description": "A description of your side project goes here. Update this in portfolio.json or your Gist.",
-      "technologies": ["React", "TypeScript", "PostgreSQL"],
+      "name": "Wellbook",
+      "description": "Built from scratch and contributed significantly to the development of the dashboard, and Gantt view - achieving a 20% faster feature implementation rate compared to initial estimates for very first demo.",
+      "technologies": ["Angular"],
+      "url": "",
+      "github": "",
+      "featured": false
+    },
+    {
+      "name": "Wellbore Analyzer",
+      "description": "Pioneered the creation of an Angular-based data analysis and visualization solution for a Well company, empowering stakeholders to gain valuable insights from vast datasets with a remarkable 40% reduction in data processing time. Implemented interactive and dynamic visualizations, enabling the company to make data-driven decisions efficiently, resulting in a 30% improvement in well-site performance and a 20% increase in resource utilization, leading to significant cost savings.",
+      "technologies": ["Angular"],
+      "url": "",
+      "github": "",
+      "featured": false
+    },
+    
+    {
+      "name": "Oslofjordens Friluftsråd",
+      "description": "Led development of a state-of-the-art Angular website, emphasizing scalability, modularity, optimization, and top-tier security. Delivered an impressive 80%+ performance improvement over the previous solution. Managed seamless integration of vital features (SEO, Internationalization, Accessibility) driving a remarkable 230% sales surge in one year. Implemented MapBox, elevating user engagement by 400% via Google Analytics. Streamlined booking checkout with Nets Easy Payment API, enhancing user experience.",
+      "technologies": ["Angular"],
+      "url": "",
+      "github": "",
+      "featured": false
+    },
+    
+    {
+      "name": "Bonik POS",
+      "description": "Played a pivotal role in developing an Angular-based Web-based Point of Sales (POS) application, facilitating seamless transactions and inventory management with a notable 25% increase in checkout speed. Collaborated with cross-functional teams to integrate advanced features, resulting in a 15% rise in overall sales revenue and a 20% reduction in inventory discrepancies, positively impacting the company's bottom line and enhancing customer satisfaction",
+      "technologies": ["Angular"],
+      "url": "",
+      "github": "",
+      "featured": false
+    },
+    
+    {
+      "name": "SILENCE ERP",
+      "description": "Played a pivotal role in developing a cutting-edge Angular-based Enterprise Resource Planning (ERP) solution, streamlining business processes and fostering a 25% increase in overall operational efficiency. Successfully integrated diverse modules, including finance, inventory, and human resources, resulting in a 30% reduction in manual data entry and a 40% improvement in data accuracy, significantly enhancing decision-making capabilities for the organization.",
+      "technologies": ["Angular"],
+      "url": "",
+      "github": "",
+      "featured": false
+    },
+    
+    {
+      "name": "Jain Laboratories",
+      "description": "Developed an interactive product showcasing website for Jain Laboratories Ltd, resulting in a significant increase in user engagement. Implemented the website using Angular, achieving an impressive loading time of less than 3 seconds, thereby enhancing the overall user experience and reducing the bounce rate by 40% than the previous website. Leveraged Figma to design and prototype the website, facilitating seamless collaboration with the design and development teams. Utilizing Tailwind CSS as the CSS library, reduced the initial development time by 30%-40%, leading to quicker project delivery",
+      "technologies": ["Angular"],
+      "url": "",
+      "github": "",
+      "featured": false
+    },
+    {
+      "name": "Jomidar",
+      "description": "Developed and designed web application and mobile application, utilizing Angular and Ionic frameworks. Led the creation of the web application from scratch, while also crafting the UI design using Adobe XD. Leveraged expertise in Angular and Ionic to build both web and mobile components of the application, demonstrating a strong aptitude for front-end development and responsive design. Collaborated as a Junior Software Engineer, gaining valuable experience in software development lifecycle and UI/UX implementation.",
+      "technologies": ["Angular"],
       "url": "",
       "github": "",
       "featured": false
