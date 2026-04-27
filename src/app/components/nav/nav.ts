@@ -8,7 +8,6 @@ import {
   signal,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ThemeService } from '../../services/theme.service';
 
 interface NavLink {
   label: string;
@@ -22,7 +21,6 @@ interface NavLink {
   styleUrl: './nav.css',
 })
 export class Nav implements OnInit, OnDestroy {
-  readonly themeService = inject(ThemeService);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   readonly links: NavLink[] = [
