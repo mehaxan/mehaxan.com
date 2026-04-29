@@ -1,19 +1,52 @@
-import { AngularAppEngine, createRequestHandler } from '@angular/ssr';
+import {
+  AngularNodeAppEngine,
+  isMainModule,
+  writeResponseToNodeResponse,
+} from '@angular/ssr/node';
+import express from 'express';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const angularApp = new AngularAppEngine({
-	// It is safe to set allow `localhost`, so that SSR can run in local development,
-	// as, in production, Cloudflare will ensure that `localhost` is not the host.
-allowedHosts: ['localhost', 'mehaxan.mehedi-hasansjs.workers.dev', 'mehaxan.com', 'www.mehaxan.com'],
-});
+export function app(): express.Express {
+  const server = express();
+  const serverDistFolder = dirname(fileURLToPath(import.meta.url));
+  const browserDistFolder = resolve(serverDistFolder, '../browser');
 
-/**
- * This is a request handler used by the Angular CLI (dev-server and during build).
- */
-export const reqHandler = createRequestHandler(async (req) => {
-	const res = await angularApp.handle(req);
+  const angularApp = new AngularNodeAppEngine();
 
-	return res ?? new Response('Page not found.', { status: 404 });
-});
+  // Serve static assets with long-lived cache
+  server.use(
+    express.static(browserDistFolder, {
+      maxAge: '1y',
+      index: false,
+      redirect: false,
+    })
+  );
 
+  // All other routes handled by Angular SSR
+  server.use('/**', async (req, res, next) => {
+    try {
+      const response = await angularApp.handle(req);
+      if (response) {
+        await writeResponseToNodeResponse(response, res);
+      } else {
+        next();
+      }
+    } catch (err) {
+      next(err);
+    }
+  });
 
-export default { fetch: reqHandler };
+  return server;
+}
+
+function run(): void {
+  const port = Number(process.env['PORT'] || 4000);
+  app().listen(port, () => {
+    console.log(`Node Express server listening on http://localhost:${port}`);
+  });
+}
+
+if (isMainModule(import.meta.url)) {
+  run();
+}
